@@ -29,14 +29,23 @@ public class TestLogin {
         driver.get("http://opencart.qatestlab.net/index.php?route=account/login");
       driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("bonfacegithinji641@gmail.com");
        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("BK1234");
+       driver.findElement(By.xpath("//input[@value='Login']")).click();
+       
+       
         String pageTitle=driver.getTitle();
         String title="http://opencart.qatestlab.net/index.php?route=account/success";
         Assert.assertEquals(pageTitle, title, "Page title does not match expected title");
-
+        //get the title text to verify user has logged in
+        WebElement heading=driver.findElement(By.xpath("//h1[normalize-space()='Your Account Has Been Created!']"));
+        String headingText = heading.getText();
+        String text="Your Account Has Been Created!";
+        Assert.assertEquals(heading, headingText, "Text does not match expected value");
         
-
-        // You can add more test steps here for the login process
-
-      
+        //click change your password button
+        
+        driver.findElement(By.xpath("//a[normalize-space()='Change your password']")).click();
+        
+    
     }
+  
 }
