@@ -47,5 +47,10 @@ public class TestLogin {
         
     
     }
+    @Test
+    public void tearDown() {
+    	driver.quit();
+    }
+    
   
 }
